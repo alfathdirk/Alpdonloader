@@ -9,7 +9,13 @@ const { list } = require('./song');
 const baseUrl = 'https://www.youtube.com';
 
 const date = new Date().getTime();
-let directory = __dirname+'/tmp/'+date;
+const baseDir = __dirname+'/tmp/';
+let directory = baseDir+date;
+
+if(!fs.existsSync(baseDir)) {
+  fs.mkdirSync(baseDir);
+}
+
 fs.mkdirSync(directory);
 
 let downloads = list.map(async(musicTitle) => {
@@ -17,7 +23,7 @@ let downloads = list.map(async(musicTitle) => {
   try {
     var scraper = new luwak.Scraper(`${baseUrl}/results?search_query=${musicTitles}`);
     let data = await scraper
-      .engine(nightmareEngine({ waitTimeout: 80000, gotoTimeout: 80000, show: true }))
+      .engine(nightmareEngine({ waitTimeout: 80000, gotoTimeout: 80000 }))
       .select([{
         '$root': 'ytd-video-renderer',
         'title': 'a#video-title | trim',
@@ -31,6 +37,11 @@ let downloads = list.map(async(musicTitle) => {
           if (err) {
             reject(err);
           };
+
+          if(!output) {
+            output = [];
+          }
+
           console.log(output.join('\n'));
           resolve('success');
         });
@@ -50,6 +61,7 @@ function zipFolder(srcFolder, zipFilePath, callback) {
 	var zipArchive = archiver('zip', { zlib: 9 });
 
 	output.on('close', function() {
+    fs.unlinkSync(srcFolder);
 		callback();
 	});
 
