@@ -1,0 +1,17 @@
+{
+  "name": "alpdon",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "alfathdirk",
+  "license": "MIT",
+  "dependencies": {
+    "archiver": "^3.0.0",
+    "luwak": "^2.1.0",
+    "luwak-nightmare": "^1.0.0",
+    "youtube-dl": "^1.12.2"
+  }
+}
