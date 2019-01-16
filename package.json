@@ -11,7 +11,7 @@
   "dependencies": {
     "archiver": "^3.0.0",
     "luwak": "^2.1.0",
-    "luwak-nightmare": "^1.0.0",
+    "luwak-puppeteer": "^0.0.1",
     "youtube-dl": "^1.12.2"
   }
 }
