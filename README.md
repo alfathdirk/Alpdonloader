@@ -12,7 +12,7 @@ npm i alpdon --save
 
 input your title song in `song.json` download and execute index.js
 
-```bash
+```js
 const download = require('alpdon');
 
 (async () => {
