@@ -10,8 +10,6 @@ you must install python version 2.6, 2.7, or 3.2+, because this library use `you
 npm i alpdon --save
 ```
 
-input your title song in `song.json` download and execute index.js
-
 ```js
 const download = require('alpdon');
 
